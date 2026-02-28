@@ -1,0 +1,9 @@
+@use "../../styles/variables" as *;
+@use "../../styles/functions" as *;
+.main-part{
+    margin-left: 0;
+    width: 100%;
+    height: pxToRem(900);
+    background-color: #F1F7F8;
+    border: 1px solid red;
+}
