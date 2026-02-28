@@ -1,0 +1,46 @@
+// @use "../../styles/variables" as *;
+// @use "../../styles/functions" as *;
+// @use "../../styles/mixin" as *;
+.header{
+    margin-top: 0;
+    margin-left: 0;
+    width: 100%;
+    height: pxToRem(180);
+    background-color: #232940;
+    //border: 1px solid red;
+    position: absolute;
+    z-index:1;
+    .NavBar{
+        display: flex;
+        flex-direction: row;
+        // gap:pxToRem(666);
+        justify-content: space-between;
+        margin-left: pxToRem(130);
+        // margin-right: pxToRem(130);
+        margin-top: pxToRem(32);
+        //border: 1px solid green;
+        // width:  pxToRem(1022);
+        width:  79.9%;
+        // .logo{
+        //     //border: 1px solid red;
+        //     width:  pxToRem(129);
+        //     height: pxToRem(28);
+        // }
+        .pageHeaderButtonPart{
+            //margin-right:pxToRem(146);
+            //margin-left: 800px;
+            // margin-top:pxToRem(0);
+            // width: pxToRem(230);
+            // height: 30px;
+            //border:1px solid red;
+            align-self: flex-start;
+            display: flex;
+            flex-direction: row;
+            gap: 0;
+        }
+
+    }
+    
+}
+
+ 

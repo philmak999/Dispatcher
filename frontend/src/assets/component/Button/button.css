@@ -1,0 +1,23 @@
+button[button-variant=default] {
+  padding-left: pxToRem(16);
+  padding-right: pxToRem(16);
+  padding-top: pxToRem(8);
+  padding-bottom: pxToRem(8);
+  border: none;
+  border-radius: pxToRem(20);
+  background-color: #232940;
+  color: #fff;
+}
+
+button[button-variant=PageHeader] {
+  padding-left: pxToRem(16);
+  padding-right: pxToRem(16);
+  padding-top: pxToRem(8);
+  padding-bottom: pxToRem(8);
+  border-radius: pxToRem(20);
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+  font-size: pxToRem(14);
+  line-height: pxToRem(22);
+  letter-spacing: 0;
+}/*# sourceMappingURL=button.css.map */

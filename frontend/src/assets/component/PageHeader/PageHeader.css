@@ -1,0 +1,23 @@
+.header {
+  margin-top: 0;
+  margin-left: 0;
+  width: 100%;
+  height: pxToRem(180);
+  background-color: #232940;
+  position: absolute;
+  z-index: 1;
+}
+.header .NavBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: pxToRem(130);
+  margin-top: pxToRem(32);
+  width: 79.9%;
+}
+.header .NavBar .pageHeaderButtonPart {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+}/*# sourceMappingURL=PageHeader.css.map */
