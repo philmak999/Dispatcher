@@ -1,0 +1,71 @@
+.nav-container {
+  width: 93.61%;
+  margin-top: 4.5rem;
+  margin-left: 3.17%;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+.nav-container p {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 3rem;
+  line-height: 1;
+  letter-spacing: 0;
+  margin: 0;
+  padding: 0;
+}
+.nav-container .nav-bar {
+  background-color: white;
+  border-radius: 3.125rem;
+  display: flex;
+  flex-direction: row;
+}
+.nav-container .nav-bar p {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+.nav-container .nav-bar p:nth-child(1) {
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-right: 1px solid black;
+}
+.nav-container .nav-bar p:nth-child(2) {
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.nav-container .nav-bar p:nth-child(3) {
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1.5rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-left: 1px solid black;
+}/*# sourceMappingURL=MainPageNav.css.map */

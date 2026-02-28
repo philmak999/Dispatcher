@@ -4,6 +4,7 @@ function MainPartContainer() {
 
   return (
     <div className="main-part">
+     
     </div>
   );
 }

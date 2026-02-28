@@ -10,24 +10,34 @@
   background-color: #1D6287;
   border: 1px solid red;
   display: flex;
-  flex-direction: row;
-
-  .nav-logo {
-    //width: 13.29%;
+  align-items: center;
+  // gap: 78.24%;
+  .header-bar {
     margin-top: pxToRem(16);
     margin-bottom: pxToRem(16);
     margin-left: 3.17%;
     border: 1px solid red;
-    // height: 30px;
+    width: 93.61%;
     display: flex;
     flex-direction: row;
-    gap: pxToRem(16);
-    .HamburgerIcon{
+    justify-content: space-between;
+
+
+    .nav-logo {
+      // width: 51.88%;
+      // height: 30px;
+      display: flex;
+      flex-direction: row;
+      gap: pxToRem(16);
+      align-items: center;
+
+      .HamburgerIcon {
         width: pxToRem(32);
-        height:pxToRem(32);
+        height: pxToRem(32);
         border: 1px solid red;
-    }
-    p {
+      }
+
+      p {
         font-family: "Hanken Grotesk", sans-serif;
         font-weight: 900;
         font-style: normal;
@@ -39,7 +49,27 @@
         padding: 0;
         margin: 0;
         border: 1px solid red;
-       
+      }
+    }
+
+    .user {
+      .userIcon {
+        width: pxToRem(32);
+        height: pxToRem(32);
+        border: 1px solid red;
+      }
+    }
+  }
+
+
+
+
+
+  .setting {
+    .settingIcon {
+      width: pxToRem(32);
+      height: pxToRem(32);
+      border: 1px solid red;
     }
   }
 }

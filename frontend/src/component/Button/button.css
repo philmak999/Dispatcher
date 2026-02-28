@@ -28,4 +28,38 @@ button[button-variant=header-menu] .button-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+button[button-variant=hospital-edit] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  background-color: #1D6287;
+  color: white;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 0;
+  border: 1px solid red;
+  cursor: pointer;
+  white-space: nowrap;
+}
+button[button-variant=hospital-edit] .button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+button[button-variant=hospital-edit] .button-text {
+  display: inline-block;
+}
+button[button-variant=hospital-edit]:hover {
+  background-color: #14506b;
+}
+button[button-variant=hospital-edit]:active {
+  transform: scale(0.96);
 }/*# sourceMappingURL=Button.css.map */

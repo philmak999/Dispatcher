@@ -1,0 +1,46 @@
+.hospital-info {
+  margin-left: auto;
+  margin-right: 3.17%;
+  width: 52.18%;
+  height: 300px;
+  border: 1px solid red;
+  margin-top: 4.5rem;
+}
+.hospital-info .top-part {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid red;
+}
+.hospital-info .top-part p {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 1rem;
+  padding-right: 51.85%;
+  margin: 0;
+  border: 1px solid red;
+}
+.hospital-info .main-part {
+  width: 100%;
+  height: 60px;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.hospital-info .main-part .hospital-ai {
+  width: 48.41%;
+  height: 100%;
+  border: 1px solid red;
+}
+.hospital-info .main-part .map {
+  width: 48.41%;
+  height: 100%;
+  border: 1px solid red;
+}/*# sourceMappingURL=HospitalsList.css.map */
