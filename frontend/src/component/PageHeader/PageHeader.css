@@ -2,22 +2,36 @@
   margin-top: 0;
   margin-left: 0;
   width: 100%;
-  height: pxToRem(180);
-  background-color: #232940;
-  position: absolute;
-  z-index: 1;
-}
-.header .NavBar {
+  height: 4rem;
+  background-color: #1D6287;
+  border: 1px solid red;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin-left: pxToRem(130);
-  margin-top: pxToRem(32);
-  width: 79.9%;
 }
-.header .NavBar .pageHeaderButtonPart {
-  align-self: flex-start;
+.header .nav-logo {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 3.17%;
+  border: 1px solid red;
   display: flex;
   flex-direction: row;
-  gap: 0;
+  gap: 1rem;
+}
+.header .nav-logo .HamburgerIcon {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid red;
+}
+.header .nav-logo p {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: white;
+  padding: 0;
+  margin: 0;
+  border: 1px solid red;
 }/*# sourceMappingURL=PageHeader.css.map */

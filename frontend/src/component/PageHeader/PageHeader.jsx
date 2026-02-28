@@ -1,43 +1,30 @@
-import './PageHeader.scss'
-
-//import logo from '../../assets/logo/InStock-Logo.svg';
-import Button from '../Button/Button.jsx'
-//import { useNavigate } from "react-router-dom";
-import { useNavigate, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import './PageHeader.scss';
+import { useNavigate } from "react-router-dom";
+import Button from '../Button/Button.jsx';
+import HamburgerIconTag from '../../assets/icons/Hamburger.svg';
 
 function PageHeader() {
-const navigate = useNavigate();
-// const isWarehouseActive =
-// pathname === "/" || pathname.includes("warehouses");
+  //const navigate = useNavigate();
+
   return (
-    <header className="header"> 
-      <div className="NavBar">
-        {/* <img src={logo} alt="theLogo" className="logo" /> */}
-        <div className='pageHeaderButtonPart'>
-           (
-              {/* <>
-                <Button
-                  text="Warehouses"
-                  variant="PageHeader"
-                  initialColor="#FFFFFF"
-                  initialBackgroundColor="#232940"
-                  active={isWarehouseActive} 
-                //   onClick={() => navigate('/WareHouses')}
-                />
-                <Button
-                  text="Inventory"
-                  variant="PageHeader"
-                  initialColor="#FFFFFF"
-                  initialBackgroundColor="#232940"
-                  active={isInventoryActive} 
-                //   onClick={() => navigate('/Inventory')}
-                />
-              </> */}
-            )
-        </div>
+    <div className="header">
+      <div className="nav-logo">
+        <Button
+          icon={<img src={HamburgerIconTag} alt="menu" className='HamburgerIcon' />}
+          variant="header-menu"
+          onClick={() => {}}
+        />
+        <p>DISPATCHER</p>
       </div>
-    </header>
+
+      <div className='setting '>
+        <Button
+          icon={<img src={HamburgerIconTag} alt="menu" className='HamburgerIcon' />}
+          variant="header-menu"
+          onClick={() => {}}
+        />
+      </div>
+    </div>
   );
 }
 

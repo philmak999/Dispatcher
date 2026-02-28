@@ -1,6 +1,6 @@
-// @use "../../styles/variables" as *;
-// @use "../..//styles/functions" as *;
-// @use "../../styles/mixin" as *;
+@use "../../styles/variables" as *;
+@use "../..//styles/functions" as *;
+
 button[button-variant="default"] {
   padding-left: pxToRem(16);
   padding-right: pxToRem(16);
@@ -12,20 +12,44 @@ button[button-variant="default"] {
   color: #fff;
 }
 
-button[button-variant="PageHeader"] {
-  padding-left: pxToRem(16);
-  padding-right: pxToRem(16);
-  padding-top: pxToRem(8);
-  padding-bottom: pxToRem(8);
-  //border: 2px solid red;
-  border-radius: pxToRem(20);
-  //background-color: transparent;
-  //color: white;
-  font-family: inherit;
-  font-weight: 600;
-  font-size: pxToRem(14);
-  line-height: pxToRem(22);
-  letter-spacing: 0;
+// button[button-variant="PageHeader"] {
+//   padding-left: pxToRem(16);
+//   padding-right: pxToRem(16);
+//   padding-top: pxToRem(8);
+//   padding-bottom: pxToRem(8);
+//   //border: 2px solid red;
+//   border-radius: pxToRem(20);
+//   //background-color: transparent;
+//   //color: white;
+//   font-family: 'Titillium Web', sans-serif;
+//   font-weight: 600;
+//   font-size: pxToRem(14);
+//   line-height: pxToRem(22);
+//   letter-spacing: 0;
 
+// }
+
+button[button-variant="header-menu"] {
+  padding: 0;
+  background: transparent; //change the background to empty
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: #f2f4f8;
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  .button-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
