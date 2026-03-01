@@ -54,12 +54,12 @@ button[button-variant="header-menu"] {
 }
 
 button[button-variant="hospital-edit"] {
-  display: inline-flex;           // 让按钮内容水平排列
-  align-items: center;            // 垂直居中
-  gap: pxToRem(4);                // icon 和文字之间间距
+  display: inline-flex;           
+  align-items: center;           
+  gap: pxToRem(4);                
   padding: pxToRem(8) pxToRem(16);
   border-radius: pxToRem(12);
-  background-color: #1D6287;      // 按钮背景
+  background-color: #1D6287;      
   color: white;
   font-family: "Hanken Grotesk", sans-serif;
   font-weight: 700;
@@ -74,20 +74,20 @@ button[button-variant="hospital-edit"] {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: pxToRem(20);           // 控制 icon 宽度
-    height: pxToRem(20);          // 控制 icon 高度
+    width: pxToRem(20);           
+    height: pxToRem(20);          
   }
 
   .button-text {
-    display: inline-block;        // 保证文字正常排列
+    display: inline-block;       
   }
 
   &:hover {
-    background-color: #14506b;     // 悬停效果
+    background-color: #14506b;     
   }
 
   &:active {
-    transform: scale(0.96);       // 点击按下效果
+    transform: scale(0.96);       
   }
 
 }

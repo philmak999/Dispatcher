@@ -1,0 +1,25 @@
+@use "../../styles/variables" as *;
+@use "../../styles/functions" as *;
+
+.select-hospital {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #5894BC;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  .circle-inner {
+    width: 12px;                 
+    height: 12px;
+    border-radius: 50%;
+    background-color: transparent; 
+    transition: background-color 0.2s;
+  }
+
+  &.active .circle-inner {
+    background-color: #00FF00;    
+  }
+}

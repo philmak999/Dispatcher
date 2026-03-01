@@ -8,7 +8,7 @@
   width: 100%;
   height: pxToRem(64);
   background-color: #1D6287;
-  border: 1px solid red;
+  //border: 1px solid red;
   display: flex;
   align-items: center;
   // gap: 78.24%;
@@ -16,7 +16,7 @@
     margin-top: pxToRem(16);
     margin-bottom: pxToRem(16);
     margin-left: 3.17%;
-    border: 1px solid red;
+    //border: 1px solid red;
     width: 93.61%;
     display: flex;
     flex-direction: row;
@@ -33,8 +33,8 @@
 
       .HamburgerIcon {
         width: pxToRem(32);
-        height: pxToRem(32);
-        border: 1px solid red;
+        aspect-ratio: 1 / 1;
+        //border: 1px solid red;
       }
 
       p {
@@ -48,7 +48,7 @@
         color: white;
         padding: 0;
         margin: 0;
-        border: 1px solid red;
+        //border: 1px solid red;
       }
     }
 
@@ -56,7 +56,7 @@
       .userIcon {
         width: pxToRem(32);
         height: pxToRem(32);
-        border: 1px solid red;
+        //border: 1px solid red;
       }
     }
   }
@@ -69,7 +69,7 @@
     .settingIcon {
       width: pxToRem(32);
       height: pxToRem(32);
-      border: 1px solid red;
+      //border: 1px solid red;
     }
   }
 }

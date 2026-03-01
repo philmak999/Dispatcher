@@ -4,8 +4,8 @@
 .hospital-info {
     margin-left: auto;
     margin-right: 3.17%;
-    width: 52.18%;
-    height: 300px;
+    width: pxToRem(789);
+    //height: 300px;
     border: 1px solid red;
     margin-top: pxToRem(72);
 
@@ -13,7 +13,7 @@
         width: 100%;
         display: flex;
         flex-direction: row;
-         border: 1px solid red;
+        border: 1px solid red;
         p {
             font-family: "Hanken Grotesk", sans-serif;
             font-weight: 500;
@@ -32,19 +32,24 @@
     }
     .main-part{
         width: 100%;
-        height: 60px;
+        //height: 60px;
         border: 1px solid red;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         .hospital-ai{
             width: 48.41%;
-            height: 100%;
-             border: 1px solid red;
+            height: pxToRem(487);
+            //border: 1px solid red;
+            display: flex;
+            flex-direction: column;
+            gap: pxToRem(16);
+            overflow-y: auto;
         }
         .map{
              width: 48.41%;
             height: 100%;
+            height: pxToRem(487);
              border: 1px solid red;
         }
 
