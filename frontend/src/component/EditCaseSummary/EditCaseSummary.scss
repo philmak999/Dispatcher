@@ -10,7 +10,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center; // This keeps it in the middle of the screen
+  align-items: center;
   z-index: 1000;
 }
 
@@ -116,29 +116,5 @@
     gap: 16px;
     padding-top: 16px;
     border-top: 1px solid #e5e7eb;
-  }
-
-  &__btn {
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-
-    &--cancel {
-      background-color: #ffffff;
-      border: 1px solid #d1d5db;
-      &:hover {
-        background-color: #f3f4f6;
-      }
-    }
-
-    &--save {
-      background-color: #2563eb;
-      color: white;
-      border: none;
-      &:hover {
-        background-color: #1d4ed8;
-      }
-    }
   }
 }

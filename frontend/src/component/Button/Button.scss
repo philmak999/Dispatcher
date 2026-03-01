@@ -18,12 +18,13 @@
   min-width: 100px;
 
   &[btn-type="save"] {
-    background-color: $color-teal;
-    color: #ffffff;
-    border: 1px solid $color-teal;
+    border: 1px solid #9fcde5;
+    background-color: #ffffff;
+    color: #1d6287;
 
     &:hover {
-      background-color: color.adjust($color-teal, $lightness: -10%);
+      // background-color: color.adjust(#9fcde5, $lightness: -10%);
+      background-color: #f1f7f8;
     }
   }
 
@@ -34,8 +35,8 @@
     border: 1px solid $color-red;
 
     &:hover {
-      background-color: $color-red;
-      color: #ffffff;
+      background-color: #fbc7c7;
+      // color: #ffffff;
     }
   }
 

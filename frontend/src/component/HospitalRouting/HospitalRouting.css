@@ -1,0 +1,27 @@
+.hospital__container {
+  font-family: "Hanken Grotesk", sans-serif;
+  display: flex;
+  border-radius: 16px;
+  background-color: #ffffff;
+  border: 1px solid #e6e6e6;
+  overflow: hidden;
+  text-align: left;
+  width: 554px;
+  transition: width 0.4s ease;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+}
+.hospital__container--full {
+  width: 100%;
+}
+.hospital__container {
+  box-shadow: 4px 16px 16px 0 rgba(44, 44, 44, 0.1);
+}
+
+.hospital__title {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #2c2c2c;
+  margin: 0;
+}/*# sourceMappingURL=HospitalRouting.css.map */

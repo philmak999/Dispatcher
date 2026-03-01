@@ -1,12 +1,16 @@
-@use "../../../styles/variables" as *;
+@use "../../styles/variables" as *;
 
 .emergency {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - var(--page-header-height, 80px));
   text-align: center;
   padding: 16px 32px;
   font-family: "Hanken Grotesk", sans-serif;
 
   &__header {
-    border-bottom: 1px solid #e5e7eb;
     padding-bottom: 12px;
     margin-bottom: 16px;
   }
@@ -50,7 +54,6 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      //   padding: 16px 40px;
       padding: 20px 20px;
       background-color: $color-red;
       color: white;

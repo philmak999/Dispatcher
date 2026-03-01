@@ -1,0 +1,40 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #9fcde5;
+  background-color: #ffffff;
+  color: #1d6287;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: none;
+  cursor: pointer;
+  justify-content: center;
+  min-width: 100px;
+}
+.btn[btn-type=save] {
+  border: 1px solid #9fcde5;
+  background-color: #ffffff;
+  color: #1d6287;
+}
+.btn[btn-type=save]:hover {
+  background-color: #f1f7f8;
+}
+.btn[btn-type=cancel], .btn[btn-type=delete] {
+  background-color: #ffffff;
+  color: #CC3C42;
+  border: 1px solid #CC3C42;
+}
+.btn[btn-type=cancel]:hover, .btn[btn-type=delete]:hover {
+  background-color: #fbc7c7;
+}
+.btn__icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+.btn__text {
+  line-height: 1;
+}/*# sourceMappingURL=Button.css.map */

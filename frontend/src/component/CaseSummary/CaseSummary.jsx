@@ -2,7 +2,7 @@ import "./CaseSummary.scss";
 import EditButton from "../EditButton/EditButton.jsx";
 import alertIcon from "../../assets/icons/Alert.svg";
 
-function CaseSummary({ isFullWidth = false, onEditClick }) {
+function CaseSummary({ isFullWidth = false, onEditClick, onTranscriptClick }) {
   const caseSummaryClassName = isFullWidth
     ? "case-summary case-summary--full"
     : "case-summary";
@@ -81,7 +81,11 @@ function CaseSummary({ isFullWidth = false, onEditClick }) {
         </section>
 
         <div className="case-summary__actions">
-          <button className="case-summary__action" type="button">
+          <button
+            className="case-summary__action"
+            type="button"
+            onClick={onTranscriptClick}
+          >
             View 911 Transcript
           </button>
           <button

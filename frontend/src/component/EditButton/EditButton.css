@@ -1,0 +1,25 @@
+.edit-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #9FCDE5;
+  background-color: #FFFFFF;
+  color: #1D6287;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: none;
+  cursor: pointer;
+}
+.edit-button:hover {
+  background-color: #F1F7F8;
+}
+.edit-button__icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+.edit-button__text {
+  line-height: 1;
+}/*# sourceMappingURL=EditButton.css.map */

@@ -1,8 +1,10 @@
 import React from "react";
 import "./EmergencyCall.scss";
-import sendIcon from "../../icons/Send.svg";
+import { useNavigate } from "react-router-dom";
+import sendIcon from "../../assets/icons/Send.svg";
 
 const EmergencyCall = ({ onEndCall }) => {
+  const navigate = useNavigate();
   return (
     <div className="emergency">
       <div className="emergency__header">
@@ -17,7 +19,7 @@ const EmergencyCall = ({ onEndCall }) => {
 
         <button
           className="emergency__btn emergency__btn--danger"
-          onClick={onEndCall}
+          onClick={() => navigate("/")}
         >
           END & PROCESS CALL
           <img src={sendIcon} alt="" className="emergency__icon" />
