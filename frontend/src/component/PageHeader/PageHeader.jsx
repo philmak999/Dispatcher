@@ -21,6 +21,7 @@ function PageHeader({ onMenuToggle }) {
         <img src={UserIconTag} alt="user" className='icon' />
       </div>
     </div>
+
   );
 }
 

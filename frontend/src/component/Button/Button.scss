@@ -81,3 +81,43 @@ button[btn-type="delete"] {
     background-color: #fbc7c7;
   }
 }
+
+button[button-variant="hospital-edit"] {
+  display: inline-flex;           
+  align-items: center;           
+  gap: pxToRem(4);                
+  padding: pxToRem(8) pxToRem(16);
+  border-radius: pxToRem(12);
+  background-color: #1D6287;      
+  color: white;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: pxToRem(16);
+  line-height: pxToRem(24);
+  letter-spacing: 0;
+   border: 1px solid red;
+  cursor: pointer;
+   white-space: nowrap;  
+
+  .button-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: pxToRem(20);           
+    height: pxToRem(20);          
+  }
+
+  .button-text {
+    display: inline-block;       
+  }
+
+  &:hover {
+    background-color: #14506b;     
+  }
+
+  &:active {
+    transform: scale(0.96);       
+  }
+
+}
+

@@ -1,0 +1,328 @@
+@use "../../styles/variables" as *;
+@use "../../styles/functions" as *;
+
+/* ===== AiRecommend = true ===== */
+.card.ai {
+    width: 96%;
+    border: 1px solid #1D6287;
+    background-color: white;
+    border-radius: pxToRem(16);
+    display: flex;
+    flex-direction: row;
+    gap: pxToRem(16);
+      &.selected {
+        border-width: 3px;
+        border-color: #1D6287; 
+    }
+
+    .display-area {
+        width: 84.43%;
+        margin: pxToRem(24);
+        display: flex;
+        flex-direction: column;
+        gap: pxToRem(16);
+        align-items: flex-start;
+        //border: 1px solid green;
+
+        .recommend-flag {
+            margin: 0;
+            box-sizing: border-box;
+            border-radius: pxToRem(16);
+            display: flex;
+            flex-direction: row;
+            gap: pxToRem(4);
+            background-color: #00A970;
+            align-items: center;
+            //border: 1px solid red;
+
+            .check-icon_white {
+                width: pxToRem(16);
+                aspect-ratio: 1 / 1;
+                display: block;
+                filter: brightness(0) invert(1);
+                margin-left: pxToRem(16);
+                margin-top: pxToRem(6);
+                margin-bottom: pxToRem(6);
+
+            }
+
+            p {
+                //padding: pxToRem(4) pxToRem(16);
+                font-family: "Hanken Grotesk", sans-serif;
+                font-weight: 700;
+                font-size: pxToRem(12);
+                line-height: pxToRem(16);
+                letter-spacing: 0;
+                color: #fff;
+                margin: 0;
+                margin-right: pxToRem(16);
+                margin-top: pxToRem(6);
+                margin-bottom: pxToRem(6);
+
+            }
+        }
+
+        .hospital-name {
+            margin: 0;
+            padding: 0;
+            font-family: "Hanken Grotesk", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+            font-size: pxToRem(24);
+            line-height: 100%;
+            letter-spacing: 0;
+            text-transform: uppercase;
+            word-break: break-word;
+            //border: 1px solid red;
+        }
+
+        .hospital-detail {
+            width: 100%;
+            //border: 1px solid red;
+            display: flex;
+            flex-direction: column;
+            gap: pxToRem(12);
+            align-items: flex-start;
+            .hospital-score {
+                display: flex;
+                flex-direction: row;
+                gap: pxToRem(8);
+                //border: 1px solid red;
+                align-items: center;
+
+                .score-icon {
+                    padding: 0;
+                    //border: 1px solid red;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                }
+
+                .score-number {
+                    font-family: "Hanken Grotesk", sans-serif;
+                    font-weight: 700;
+                    font-style: normal;
+                    font-size: pxToRem(16);
+                    line-height: pxToRem(24);
+                    letter-spacing: 0;
+                    padding: 0;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    word-break: none;
+                    color: #00A970;
+                    //border: 1px solid red;
+                }
+
+            }
+            .gps-info {
+                //border: 1px solid red;
+                display: flex;
+                flex-direction: row;
+                gap: pxToRem(8);
+
+                .map-icon {
+                    width: pxToRem(16);
+                    aspect-ratio: 1 / 1;
+                }
+
+                p {
+                    font-family: "Hanken Grotesk", sans-serif;
+                    font-weight: 500;
+                    font-style: normal;
+                    font-size: pxToRem(16);
+                    line-height: pxToRem(24);
+                    letter-spacing: 0;
+                    padding: 0;
+                    margin: 0;
+                    word-break: none;
+
+                }
+                 .drive-time {
+                        color: #00A970;
+                    }
+
+            }
+
+            .hospital-info {
+                width: 100%;
+                //border: 1px solid red;
+                display: flex;
+                flex-direction: row;
+                gap: pxToRem(4);
+                border-top: 1px solid #9FCDE5;
+                border-left: none;
+                border-right: none;
+                border-bottom:none ;
+                margin-top:0;
+                align-items: center;
+
+                .check-icon_green {
+                    width: pxToRem(16);
+                    aspect-ratio: 1 / 1;
+                    display: block;
+                    margin-top:pxToRem(13);
+                }
+
+                p {
+                    margin: 0;
+                    padding-top:  pxToRem(9);
+                    font-family: "Hanken Grotesk", sans-serif;
+                    font-weight: 700;
+                    font-style: normal;
+                    font-size: 16px;
+                    line-height: 24px;
+                    letter-spacing: 0;
+
+                }
+            }
+
+        }
+    }
+
+}
+
+
+
+
+
+
+/* ===== AiRecommend = false ===== */
+.card.normal {
+   width: 96%;
+    border: 1px solid #1D6287;
+    background-color: white;
+    border-radius: pxToRem(16);
+    display: flex;
+    flex-direction: row;
+    gap: pxToRem(16);
+          &.selected {
+        border-width: 3px;
+        border-color: #1D6287; 
+    }
+
+    .display-area {
+        width: 84.43%;
+        margin: pxToRem(24);
+        display: flex;
+        flex-direction: column;
+        gap: pxToRem(16);
+        align-items: flex-start;
+        //border: 1px solid #E17100;
+
+
+        .hospital-name {
+            margin: 0;
+            padding: 0;
+            font-family: "Hanken Grotesk", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+            font-size: pxToRem(24);
+            line-height: 100%;
+            letter-spacing: 0;
+            text-transform: uppercase;
+            word-break: break-word;
+            //border: 1px solid red;
+        }
+
+        .hospital-detail {
+            width: 100%;
+            //border: 1px solid red;
+            display: flex;
+            flex-direction: column;
+            gap: pxToRem(12);
+            align-items: flex-start;
+            .hospital-score {
+                display: flex;
+                flex-direction: row;
+                gap: pxToRem(8);
+                //border: 1px solid red;
+                align-items: center;
+
+                .score-icon {
+                    padding: 0;
+                    //border: 1px solid red;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                }
+
+                .score-number {
+                    font-family: "Hanken Grotesk", sans-serif;
+                    font-weight: 700;
+                    font-style: normal;
+                    font-size: pxToRem(16);
+                    line-height: pxToRem(24);
+                    letter-spacing: 0;
+                    padding: 0;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    word-break: none;
+                    color: #E17100;
+                    //border: 1px solid red;
+                }
+
+            }
+            .gps-info {
+                //border: 1px solid red;
+                display: flex;
+                flex-direction: row;
+                gap: pxToRem(8);
+
+                .map-icon {
+                    width: pxToRem(16);
+                    aspect-ratio: 1 / 1;
+                }
+
+                p {
+                    font-family: "Hanken Grotesk", sans-serif;
+                    font-weight: 500;
+                    font-style: normal;
+                    font-size: pxToRem(16);
+                    line-height: pxToRem(24);
+                    letter-spacing: 0;
+                    padding: 0;
+                    margin: 0;
+                    word-break: none;
+
+                }
+                 .drive-time {
+                        color: #E17100;
+                    }
+
+            }
+
+            .hospital-info {
+                width: 100%;
+                //border: 1px solid red;
+                display: flex;
+                flex-direction: row;
+                gap: pxToRem(4);
+                border-top: 1px solid #9FCDE5;
+                border-left: none;
+                border-right: none;
+                border-bottom:none ;
+                margin-top:0;
+                align-items: center;
+
+                .alert-icon {
+                    width: pxToRem(16);
+                    aspect-ratio: 1 / 1;
+                    display: block;
+                    margin-top:pxToRem(13);
+                }
+
+                p {
+                    margin: 0;
+                    padding-top:  pxToRem(9);
+                    font-family: "Hanken Grotesk", sans-serif;
+                    font-weight: 500;
+                    font-style: normal;
+                    font-size: 16px;
+                    line-height: 24px;
+                    letter-spacing: 0;
+
+                }
+            }
+
+        }
+    }
+
+}
