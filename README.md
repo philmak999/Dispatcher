@@ -13,18 +13,5 @@ This project is a dispatcher workflow prototype for triaging emergency calls, se
 - `frontend/` - React + Vite client application
 - `backend/` - Express server and database import scripts
 
-## Run Locally
-1. `cd frontend`
-2. `npm install`
-3. `npm run dev`
-
-Open the URL printed by Vite to view the app in the browser.
-
 ## Database Import (MySQL)
 The backend includes a simple importer for `.mysql`/`.sql` files.
-
-1. `cd backend`
-2. `npm install`
-3. Create `backend/.env` (see `backend/.env.example`)
-4. Place your SQL file at the path in `DB_SQL_FILE`
-5. Run: `npm run db:import`
