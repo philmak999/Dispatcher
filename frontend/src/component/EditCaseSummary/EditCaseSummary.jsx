@@ -2,20 +2,8 @@ import React, { useState } from "react";
 import Button from "../Button/Button.jsx";
 import "./EditCaseSummary.scss";
 
-const initialData = {
-  callId: "911-2026-07821",
-  timestamp: "10:14:32 AM - 10:16:31 AM",
-  name: "Gabriel Smith",
-  location: "1458 Dundas St W, Toronto, ON",
-  relationship: "Spouse",
-  profile: "Male, 62\nCardiac risk factors (diabetes, hypertension)",
-  history: "Diabetes, Hypertension \nPrevious cardiac concerns",
-  symptoms:
-    '**Severe chest pain with shortness of breath** \nChest pain began approximately 20 minutes ago \nPain described as "crushing" and radiating to left arm \nShortness of breath \nSweating \nPatient conscious but weak.',
-};
-
-const EditCaseSummary = ({ onClose }) => {
-  const [formData, setFormData] = useState(initialData);
+const EditCaseSummary = ({ onClose, patientData }) => {
+  const [formData, setFormData] = useState(patientData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

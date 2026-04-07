@@ -25,6 +25,31 @@ function App() {
   const [isTranscriptOpen, setIsTranscriptOpen] = useState(false);
   const [selectedHospitalIndex, setSelectedHospitalIndex] = useState(null);
 
+  const patientsByRoute = {
+    "/": {
+      callId: "911-2026-07821",
+      timestamp: "10:14:32 AM - 10:16:31 AM",
+      name: "Gabriel Smith",
+      location: "1458 Dundas St W, Toronto, ON",
+      relationship: "Spouse",
+      profile: "Male, 62\nCardiac risk factors (diabetes, hypertension)",
+      history: "Diabetes, Hypertension \nPrevious cardiac concerns",
+      symptoms:
+        'Severe chest pain with shortness of breath \nChest pain began approximately 20 minutes ago \nPain described as "crushing" and radiating to left arm \nShortness of breath \nSweating \nPatient conscious but weak.',
+    },
+    "/case-summary-2": {
+      callId: "911-2026-09107",
+      timestamp: "2:43:11 PM - 2:46:02 PM",
+      name: "Elena Park",
+      location: "88 Bloor St E, Toronto, ON",
+      relationship: "Bystander",
+      profile: "Female, 29\nKnown asthma, no cardiac history",
+      history: "Asthma (moderate)\nNo known allergies",
+      symptoms:
+        "Severe shortness of breath and wheezing \nRapid breathing and audible wheeze \nUnable to speak full sentences \nChest tightness reported \nRescue inhaler used with minimal relief \nPatient anxious but responsive.",
+    },
+  };
+
   const hospitals = [
     {
       HospitalName: "KT Hospital",
@@ -171,7 +196,7 @@ function App() {
         <Route path="/emergency" element={<EmergencyCall />} />
       </Routes>
 
-      {isEditOpen && <EditCaseSummary onClose={handleEditToggle} />}
+      {isEditOpen && <EditCaseSummary onClose={handleEditToggle} patientData={patientsByRoute[location.pathname] ?? patientsByRoute["/"]} />}
       {isTranscriptOpen && <Transcript onClose={handleTranscriptToggle} />}
       <PageFooter isMenuOpen={isMenuOpen} />
     </>
