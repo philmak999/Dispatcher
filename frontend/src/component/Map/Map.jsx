@@ -25,7 +25,12 @@ function Map({ hospital, patientLocation }) {
     });
     map.addControl(new mapboxgl.NavigationControl(), "top-right");
     mapRef.current = map;
+
+    const ro = new ResizeObserver(() => map.resize());
+    ro.observe(containerRef.current);
+
     return () => {
+      ro.disconnect();
       map.remove();
       mapRef.current = null;
     };
