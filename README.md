@@ -1,22 +1,24 @@
-# Dispatcher Dashboard
+# Dispatcher
 
-This project is a dispatcher workflow prototype for triaging emergency calls, selecting a destination hospital, and dispatching an ambulance using AI-generated outputs from live-feed hospital data and phone call transcripts. The UI includes a case summary, hospital routing tools, a selectable hospital list with map previews, and follow-up screens for ambulance dispatched and emergency call in progress.
+AI-powered 911 dispatcher workflow reducing urgent medical response times, improving ambulance-to-hospital efficiency, and reducing ER wait times across hospitals.
 
 ## Key Features
-- Case summary display with critical symptoms and actions
-- Hospital routing panel with selectable hospital cards
-- Map preview tied to the selected hospital with fully supported incorportation of Google Maps API on deployment
-- Dispatch flow with follow-up pages
-- Hamburger menu navigation and responsive layout adjustments
+- AI-powered information extractor from live 911 call-generated transcript
+- AI-generated patient case summary and hospital routing options with AI scoring and reasoning
+- Real-time voice recognition transcript verbatim. 
+- Ambulance routing tied to AI reasoning with fully incorporated maps API (mapbox)
+- Fully functiona 911 operator-focused UI equipped with easy access, pertinent information at the ready.
 
 ## Future additions
-- Implement AI reasoning using secure live hospital API data
-- Using trained LLM models to provide rapid suggestions on hospital destination, route, and ambulance to significantly reduce ER wait times across multiple nearby hospitals
+- Implement live hospital API data in AI reasoning
+- Using more powerful and trained LLM models to provide more accurate, rapid and key-symptom suggestions on hospital destination, route, and ambulance to significantly reduce ER wait times across multiple nearby hospitals
 - Improve security and validation in both AI and user handling of sensitive data. 
+- HIPAA compliance
 
 ## Project Structure
 - `frontend/` - React + Vite client application
 - `backend/` - Express server and MySQL database
+- Prompt-focused AI reasoning and information handling
 
 ## Database Import (MySQL)
 The backend includes a an importer-ready code constructed for `.mysql`/`.sql` files.
