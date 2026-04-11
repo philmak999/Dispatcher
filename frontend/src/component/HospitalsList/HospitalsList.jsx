@@ -11,8 +11,8 @@ function HospitalsList({ hospitals = [], selectedIndex = null, onSelect }) {
     }, -1);
 
     return (
-        <div className='hospital-info'>
-            <div className='hospital-ai'>
+        <div className='hospitals-list'>
+            <div className='hospitals-list__scroll'>
                 {hospitals.map((hospital, index) => (
                     <HospitalCard
                         key={index}
@@ -28,9 +28,9 @@ function HospitalsList({ hospitals = [], selectedIndex = null, onSelect }) {
                         isSelected={selectedIndex === index}
                     />
                 ))}
-
             </div>
         </div>
-    )
+    );
 }
+
 export default HospitalsList;

@@ -49,13 +49,21 @@ app.post("/api/process-call", async (req, res) => {
 
 Rules:
 - "name": use the victim's full name if stated. If the name was never mentioned or is unknown, set this to "Unidentified".
-- "location": the precise street address or location mentioned by the caller. If an intersection is given, format as "Main St and 1st Ave". If no location is mentioned, set to "URGENT: Missing Location" and change all the text color for the location parameter to red in the frontend.
-- "profile": identify the name of the victim as well as caller (if provided) and separate these into "Victim:" and "Caller:" if applicable. In bullet-point format, describe the victim's age, sex, and ethnicity mentioned by the caller using "Sex:", "Age:", "Ethnicity:", and in a list format underneath the name. If the name is "Unidentified", the operator should inquire about details related to the victim using any available physical details mentioned or implied: approximate age, sex, ethnicity, body size/build, clothing, hair, and any other identifying information an operator would record. Each detail on its own line in a bullet-point format. If no details are mentioned for either case, write "No details mentioned" under the respective section.
-- "history": Past and relevant medical history, conditions, or medications related to the victim. If no history is mentioned, set to "No relevant medical history mentioned".
-- "symptoms": the victim's current symptoms and condition as described by the caller. Each symptom on its own line in bullet-point format.
+- "location": the precise street address or location mentioned by the caller. If an intersection is given, format as "Main St and 1st Ave". If no location is mentioned, set to "URGENT: Missing Location".
+- "profile": format as labeled key-value pairs, one per line, in this exact order:
+    Name: [victim's full name, or "Unidentified"]
+    Sex: [Male/Female/Unknown]
+    Age: [number, or "Unknown"]
+    Ethnicity: [ethnicity if mentioned, otherwise omit this line]
+  If the name is "Unidentified", also include any physical details the caller mentioned that could help identify the victim (approximate age, build, clothing, hair, etc.) as additional labeled lines, e.g. "Build: Heavyset", "Clothing: Red jacket". If no details at all are known, add a final line "Details: None mentioned".
+- "history": format as labeled key-value pairs, one per line. Use these labels where applicable:
+    Conditions: [comma-separated list of medical conditions, or "None mentioned"]
+    Medications: [comma-separated list if mentioned, otherwise omit this line]
+    Notes: [any other relevant medical history, or omit if none]
+- "symptoms": the victim's current symptoms and condition as described by the caller. Each symptom on its own line as a plain sentence (no bullet characters).
 - "relationship": the caller's relationship to the victim (e.g. spouse, bystander, etc). If not mentioned or unknown, set to "Unknown".
 
-All field values must be plain strings. Use newline characters to separate multiple items within a field. Use sentence case: capitalize only the first letter of each sentence and proper nouns. Do not use ALL CAPS.`,
+All field values must be plain strings. Use newline characters to separate lines within a field. Use sentence case: capitalize only the first letter of each sentence and proper nouns. Do not use ALL CAPS. Do not use bullet characters (•, -, *) — labeled lines only.`,
                 },
                 {
                     role: "user",

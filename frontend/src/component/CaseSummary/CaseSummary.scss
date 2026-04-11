@@ -19,12 +19,44 @@
     gap: 16px;
     padding: 24px;
     color: black;
+    cursor: pointer;
+    user-select: none;
 
-    @media (max-width: 900px) {
+    @media (max-width: 1199px) {
       padding: 16px;
       gap: 8px;
       flex-wrap: wrap;
     }
+  }
+
+  &__header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__chevron {
+    flex-shrink: 0;
+    color: #2C2C2C;
+    transition: transform 0.3s ease;
+
+    &--collapsed {
+      transform: rotate(-90deg);
+    }
+  }
+
+  &__body {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.35s ease;
+
+    &--collapsed {
+      grid-template-rows: 0fr;
+    }
+  }
+
+  &__body-inner {
+    overflow: hidden;
   }
 
   &__divider {
@@ -50,9 +82,12 @@
     padding: 0 24px 24px;
     color: #2C2C2C;
 
-    @media (max-width: 900px) {
+    @media (max-width: 1199px) {
       padding: 0 16px 16px;
       gap: 16px;
+    }
+
+    @media (max-width: 900px) {
       font-size: 14px;
     }
   }
@@ -70,21 +105,41 @@
     padding: 24px;
     display: flex;
     flex-direction: column;
+    gap: 8px;
+    width: fit-content;
+
+    @media (max-width: 1199px) {
+      padding: 16px 12px;
+    }
   }
 
   &__info-row {
     display: flex;
-    gap: 8px;
     flex-wrap: wrap;
+    column-gap: 6px;
   }
 
   &__info-label {
     font-weight: 600;
   }
 
+  &__patient-row {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+  }
+
+  &__section-divider {
+    width: 1px;
+    background-color: #E6E6E6;
+    margin: 0 24px;
+    flex-shrink: 0;
+  }
+
   &__section {
     display: flex;
     flex-direction: column;
+    flex: 1;
   }
 
   &__heading {
@@ -214,10 +269,10 @@
 
   &--full &__top-row {
     flex-direction: row;
+
+    @media (max-width: 1199px) {
+      flex-direction: column;
+    }
   }
 
-  &--full &__info,
-  &--full &__section {
-    flex: 1;
-  }
 }

@@ -6,10 +6,10 @@ function SelectHospital() {
 
   return (
     <div
-      className={`select-hospital ${selected ? 'active' : ''}`}
+      className={`select-hospital ${selected ? 'select-hospital--active' : ''}`}
       onClick={() => setSelected(!selected)}
     >
-      <div className="circle-inner"></div>
+      <div className="select-hospital__inner"></div>
     </div>
   );
 }

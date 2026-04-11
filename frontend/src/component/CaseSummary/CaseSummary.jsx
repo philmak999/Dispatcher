@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./CaseSummary.scss";
 import EditButton from "../EditButton/EditButton.jsx";
 import alertIcon from "../../assets/icons/Alert.svg";
@@ -6,11 +7,13 @@ const toLines = (value) => {
   if (!value) return [];
   const lines = Array.isArray(value)
     ? value.map(String).filter(Boolean)
-    : String(value).split(/\n|,\s*/).map((s) => s.trim()).filter(Boolean);
-  return lines.map((s) => s.charAt(0).toUpperCase() + s.slice(1));
+    : String(value).split(/\n/).map((s) => s.trim()).filter(Boolean);
+  return lines;
 };
 
 function CaseSummary({ isFullWidth = false, onEditClick, onTranscriptClick, patientData, triageData }) {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
   const caseSummaryClassName = isFullWidth
     ? "case-summary case-summary--full"
     : "case-summary";
@@ -22,13 +25,27 @@ function CaseSummary({ isFullWidth = false, onEditClick, onTranscriptClick, pati
 
   return (
     <section className={caseSummaryClassName}>
-      <header className="case-summary__header">
-        <h2 className="case-summary__title">Case Summary</h2>
-        <EditButton onClick={onEditClick} />
+      <header
+        className="case-summary__header"
+        onClick={() => setIsCollapsed((v) => !v)}
+      >
+        <div className="case-summary__header-left">
+          <svg
+            className={`case-summary__chevron${isCollapsed ? " case-summary__chevron--collapsed" : ""}`}
+            width="20" height="20" viewBox="0 0 20 20" fill="none"
+            aria-hidden="true"
+          >
+            <path d="M5 8l5 5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <h2 className="case-summary__title">Case Summary</h2>
+        </div>
+        <EditButton onClick={(e) => { e.stopPropagation(); onEditClick(); }} />
       </header>
-      <div className="case-summary__divider" />
 
-      <div className="case-summary__content">
+      <div className={`case-summary__body${isCollapsed ? " case-summary__body--collapsed" : ""}`}>
+        <div className="case-summary__body-inner">
+          <div className="case-summary__divider" />
+          <div className="case-summary__content">
         <div className="case-summary__top-row">
           <section className="case-summary__info" aria-label="Case Information">
             <div className="case-summary__info-row">
@@ -59,31 +76,34 @@ function CaseSummary({ isFullWidth = false, onEditClick, onTranscriptClick, pati
             </div>
           </section>
 
-          <section className="case-summary__section">
-            <h3 className="case-summary__heading">
-              {patientData?.name ?? "Unidentified"}
-            </h3>
-            <div className="case-summary__details">
-              {profileLines.length > 0
-                ? profileLines.map((line, i) => <p key={i}>{line}</p>)
-                : <>
-                    <p>Male, 62</p>
-                    <p>Cardiac risk factors (diabetes, hypertension)</p>
-                  </>}
-            </div>
-          </section>
+          <div className="case-summary__patient-row">
+            <section className="case-summary__section">
+              <h3 className="case-summary__heading">Patient</h3>
+              <div className="case-summary__details">
+                {profileLines.length > 0
+                  ? profileLines.map((line, i) => <p key={i}>{line}</p>)
+                  : <>
+                      <p>Name: Gabriel Smith</p>
+                      <p>Sex: Male</p>
+                      <p>Age: 62</p>
+                    </>}
+              </div>
+            </section>
 
-          <section className="case-summary__section">
-            <h3 className="case-summary__heading">Background</h3>
-            <div className="case-summary__details">
-              {historyLines.length > 0
-                ? historyLines.map((line, i) => <p key={i}>{line}</p>)
-                : <>
-                    <p>Diabetes, hypertension</p>
-                    <p>Previous cardiac concerns</p>
-                  </>}
-            </div>
-          </section>
+            <div className="case-summary__section-divider" />
+
+            <section className="case-summary__section">
+              <h3 className="case-summary__heading">Background</h3>
+              <div className="case-summary__details">
+                {historyLines.length > 0
+                  ? historyLines.map((line, i) => <p key={i}>{line}</p>)
+                  : <>
+                      <p>Conditions: Diabetes, hypertension</p>
+                      <p>Notes: Previous cardiac concerns</p>
+                    </>}
+              </div>
+            </section>
+          </div>
         </div>
 
         <section className="case-summary__critical">
@@ -142,6 +162,8 @@ function CaseSummary({ isFullWidth = false, onEditClick, onTranscriptClick, pati
           >
             EMS Intake Unavailable
           </button>
+        </div>
+          </div>
         </div>
       </div>
     </section>

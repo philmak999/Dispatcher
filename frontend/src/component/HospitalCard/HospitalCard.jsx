@@ -9,22 +9,26 @@ function HospitalInfo({ text, details, icon, iconAlt, iconClass }) {
     if (!text) return null;
 
     return (
-        <div className='hospital-info'>
+        <div className='hospital-card__info'>
             <img src={icon} alt={iconAlt} className={iconClass} />
-            <div className='hospital-info__body'>
-                <div className='hospital-info__row'>
-                    <p className='hospital-info__label'>{text}</p>
+            <div className='hospital-card__info-body'>
+                <div className='hospital-card__info-row'>
+                    <p className='hospital-card__info-label'>{text}</p>
                     {details && (
                         <button
-                            className='hospital-info__toggle'
+                            className='hospital-card__info-toggle'
                             onClick={(e) => { e.stopPropagation(); setExpanded((v) => !v); }}
                         >
-                            {expanded ? 'Less' : 'View more details'}
+                            {expanded ? (
+                                'Less'
+                            ) : (
+                                'Details'
+                            )}
                         </button>
                     )}
                 </div>
                 {expanded && details && (
-                    <p className='hospital-info__details'>{details}</p>
+                    <p className='hospital-card__info-details'>{details}</p>
                 )}
             </div>
         </div>
@@ -45,66 +49,40 @@ function HospitalCard({
 }) {
     return (
         <div
-            className={`card ${AiRecommend ? 'ai' : 'normal'} ${isSelected ? 'selected' : ''}`}
+            className={`hospital-card ${AiRecommend ? 'hospital-card--ai' : 'hospital-card--normal'} ${isSelected ? 'hospital-card--selected' : ''}`}
             onClick={onClick}
         >
-            <div className='display-area'>
-                {AiRecommend ? (
-                    <>
-                        <div className='recommend-flag'>
-                            <img src={CheckIconTag} alt="CheckLogo" className="check-icon_white" />
-                            <p>RECOMMENDED</p>
-                        </div>
-                        <h3 className='hospital-name'>{HospitalName}</h3>
-                        <div className='hospital-detail'>
-                            <div className='hospital-score'>
-                                <p className='score-icon'>•</p>
-                                <p className='score-number'>{Recommendscore} Match Score</p>
-                            </div>
-                            <div className='gps-info'>
-                                <img src={MapIconTag} alt="MapLogo" className="map-icon" />
-                                <p>{HospitalNameDistance} km away</p>
-                                <p>•</p>
-                                <p className="drive-time">{DriveTime} minutes</p>
-                            </div>
-                            <HospitalInfo
-                                text={info}
-                                details={HospitalDetails}
-                                icon={CheckIconTag}
-                                iconAlt="CheckLogo"
-                                iconClass="check-icon_green"
-                            />
-                        </div>
-                    </>
-                ) : (
-                    <>
-                        {isAlternative && (
-                            <div className='alternative-flag'>
-                                <p>ALTERNATIVE</p>
-                            </div>
-                        )}
-                        <h3 className='hospital-name'>{HospitalName}</h3>
-                        <div className='hospital-detail'>
-                            <div className='hospital-score'>
-                                <p className='score-icon'>•</p>
-                                <p className='score-number'>{Recommendscore} Match Score</p>
-                            </div>
-                            <div className='gps-info'>
-                                <img src={MapIconTag} alt="MapLogo" className="map-icon" />
-                                <p>{HospitalNameDistance} km away</p>
-                                <p>•</p>
-                                <p className="drive-time">{DriveTime} minutes</p>
-                            </div>
-                            <HospitalInfo
-                                text={info}
-                                details={HospitalDetails}
-                                icon={AlertIconTag}
-                                iconAlt="AlertLogo"
-                                iconClass="alert-icon"
-                            />
-                        </div>
-                    </>
+            <div className='hospital-card__score-row'>
+                {AiRecommend && (
+                    <div className='hospital-card__flag hospital-card__flag--recommended'>
+                        <img src={CheckIconTag} alt="CheckLogo" className="hospital-card__flag-icon" />
+                        <p>RECOMMENDED</p>
+                    </div>
                 )}
+                {!AiRecommend && isAlternative && (
+                    <div className='hospital-card__flag hospital-card__flag--alternative'>
+                        <p>ALTERNATIVE</p>
+                    </div>
+                )}
+                <p className='hospital-card__score-number'>{Recommendscore} Match Score</p>
+            </div>
+            <div className='hospital-card__display'>
+                <h3 className='hospital-card__name'>{HospitalName}</h3>
+                <div className='hospital-card__detail'>
+                    <div className='hospital-card__gps'>
+                        <img src={MapIconTag} alt="MapLogo" className="hospital-card__gps-icon" />
+                        <p>{HospitalNameDistance} km away</p>
+                        <p>•</p>
+                        <p className="hospital-card__drive-time">{DriveTime} minutes</p>
+                    </div>
+                    <HospitalInfo
+                        text={info}
+                        details={HospitalDetails}
+                        icon={AiRecommend ? CheckIconTag : AlertIconTag}
+                        iconAlt={AiRecommend ? "CheckLogo" : "AlertLogo"}
+                        iconClass={AiRecommend ? "hospital-card__check-icon" : "hospital-card__alert-icon"}
+                    />
+                </div>
             </div>
         </div>
     );

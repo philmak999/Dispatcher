@@ -11,15 +11,15 @@
   align-items: center;
   cursor: pointer;
 
-  .circle-inner {
-    width: 12px;                 
+  &__inner {
+    width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: transparent; 
+    background-color: transparent;
     transition: background-color 0.2s;
   }
 
-  &.active .circle-inner {
-    background-color: #00FF00;    
+  &--active &__inner {
+    background-color: #00FF00;
   }
 }

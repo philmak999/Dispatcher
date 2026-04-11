@@ -25,6 +25,7 @@ function App() {
   const [selectedHospitalIndex, setSelectedHospitalIndex] = useState(null);
   const [editedPatientData, setEditedPatientData] = useState(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isHospitalSectionOpen, setIsHospitalSectionOpen] = useState(true);
 
   const patientsByRoute = {
     "/": {
@@ -33,8 +34,8 @@ function App() {
       name: "Gabriel Smith",
       location: "1458 Dundas St W, Toronto, ON",
       relationship: "Spouse",
-      profile: "Male, 62\nCardiac risk factors (diabetes, hypertension)",
-      history: "Diabetes, Hypertension \nPrevious cardiac concerns",
+      profile: "Name: Gabriel Smith\nSex: Male\nAge: 62",
+      history: "Conditions: Diabetes, Hypertension\nNotes: Previous cardiac concerns",
       symptoms:
         'Severe chest pain with shortness of breath \nChest pain began approximately 20 minutes ago \nPain described as "crushing" and radiating to left arm \nShortness of breath \nSweating \nPatient conscious but weak.',
     },
@@ -44,8 +45,8 @@ function App() {
       name: "Elena Park",
       location: "88 Bloor St E, Toronto, ON",
       relationship: "Bystander",
-      profile: "Female, 29\nKnown asthma, no cardiac history",
-      history: "Asthma (moderate)\nNo known allergies",
+      profile: "Name: Elena Park\nSex: Female\nAge: 29",
+      history: "Conditions: Asthma (moderate)\nNotes: No known allergies",
       symptoms:
         "Severe shortness of breath and wheezing \nRapid breathing and audible wheeze \nUnable to speak full sentences \nChest tightness reported \nRescue inhaler used with minimal relief \nPatient anxious but responsive.",
     },
@@ -157,22 +158,29 @@ function App() {
                   />
                 </div>
                 <div className="main-layout__right">
-                  <HospitalRouting />
-                <div className="main-layout__right-row">
-                  <HospitalsList
-                    hospitals={displayHospitals}
-                    selectedIndex={selectedHospitalIndex}
-                    onSelect={setSelectedHospitalIndex}
+                  <HospitalRouting
+                    isCollapsed={!isHospitalSectionOpen}
+                    onToggle={() => setIsHospitalSectionOpen((v) => !v)}
                   />
-                  <div className="main-layout__map-stack">
-                    <Map
-                      hospital={selectedHospital}
-                      patientLocation={currentPatientData?.location}
-                    />
-                    <DispatchButton
-                      onClick={handleDispatch}
-                      disabled={selectedHospitalIndex === null}
-                    />
+                <div className={`main-layout__hospital-body${isHospitalSectionOpen ? "" : " main-layout__hospital-body--collapsed"}`}>
+                  <div className="main-layout__hospital-body-inner">
+                    <div className="main-layout__right-row">
+                      <HospitalsList
+                        hospitals={displayHospitals}
+                        selectedIndex={selectedHospitalIndex}
+                        onSelect={setSelectedHospitalIndex}
+                      />
+                      <div className="main-layout__map-stack">
+                        <Map
+                          hospital={selectedHospital}
+                          patientLocation={currentPatientData?.location}
+                        />
+                        <DispatchButton
+                          onClick={handleDispatch}
+                          disabled={selectedHospitalIndex === null}
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -195,22 +203,29 @@ function App() {
                   />
                 </div>
                 <div className="main-layout__right">
-                  <HospitalRouting />
-                  <div className="main-layout__right-row">
-                    <HospitalsList
-                      hospitals={hospitals}
-                      selectedIndex={selectedHospitalIndex}
-                      onSelect={setSelectedHospitalIndex}
-                    />
-                    <div className="main-layout__map-stack">
-                      <Map
-                        hospital={selectedHospital}
-                        patientLocation={currentPatientData?.location}
-                      />
-                      <DispatchButton
-                        onClick={handleDispatch}
-                        disabled={selectedHospitalIndex === null}
-                      />
+                  <HospitalRouting
+                    isCollapsed={!isHospitalSectionOpen}
+                    onToggle={() => setIsHospitalSectionOpen((v) => !v)}
+                  />
+                  <div className={`main-layout__hospital-body${isHospitalSectionOpen ? "" : " main-layout__hospital-body--collapsed"}`}>
+                    <div className="main-layout__hospital-body-inner">
+                      <div className="main-layout__right-row">
+                        <HospitalsList
+                          hospitals={hospitals}
+                          selectedIndex={selectedHospitalIndex}
+                          onSelect={setSelectedHospitalIndex}
+                        />
+                        <div className="main-layout__map-stack">
+                          <Map
+                            hospital={selectedHospital}
+                            patientLocation={currentPatientData?.location}
+                          />
+                          <DispatchButton
+                            onClick={handleDispatch}
+                            disabled={selectedHospitalIndex === null}
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

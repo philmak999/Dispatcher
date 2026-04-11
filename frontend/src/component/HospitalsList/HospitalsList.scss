@@ -1,19 +1,24 @@
 @use "../../styles/variables" as *;
 @use "../../styles/functions" as *;
 
-.hospital-info {
-    width: 100%;
-    
-    }
-    .hospital-ai{
-        width: 100%;
-        height: pxToRem(700);
-        display: flex;
-        flex-direction: column;
-        gap: pxToRem(16);
-        overflow-y: auto;
+.hospitals-list {
+  width: 100%;
+  margin: 0 2px;
 
-        @media (max-width: 900px) {
-            height: pxToRem(420);
-        }
+  &__scroll {
+    width: 100%;
+    height: pxToRem(700);
+    display: flex;
+    flex-direction: column;
+    gap: pxToRem(16);
+    overflow-y: auto;
+
+    @media (max-width: 1199px) {
+      height: auto;
+      overflow-y: visible;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: pxToRem(12);
     }
+  }
+}

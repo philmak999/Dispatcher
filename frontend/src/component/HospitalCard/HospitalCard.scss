@@ -1,463 +1,330 @@
 @use "../../styles/variables" as *;
 @use "../../styles/functions" as *;
 
-.card {
-    transition: background-color 0.25s ease;
-    box-shadow: 2px 4px 8px 0 rgba(44, 44, 44, 0.08);
-    &:hover {
-        background-color: black;
-        cursor: pointer;
-    }
-}
+.hospital-card {
+  transition: background-color 0.25s ease;
+  box-shadow: 2px 4px 8px 0 rgba(44, 44, 44, 0.08);
+  max-width: 100%;
+  border: 1px solid #1D6287;
+  background-color: white;
+  border-radius: pxToRem(16);
+  display: flex;
+  flex-direction: column;
 
-/* ===== AiRecommend = true ===== */
-.card.ai {
-    max-width: 100%;
-    border: 1px solid #1D6287;
-    background-color: white;
-    border-radius: pxToRem(16);
+  &:hover {
+    background-color: #F2F2F2;
+    cursor: pointer;
+  }
+
+  &--selected {
+    border-width: 3px;
+    border-color: #1D6287;
+  }
+
+  &__score-row {
     display: flex;
-    flex-direction: row;
-    gap: pxToRem(16);
-    &:hover {
-        background-color: #F2F2F2;
-    }
-      &.selected {
-        border-width: 3px;
-        border-color: #1D6287; 
-    }
-
-    .display-area {
-        width: 100%;
-        margin: pxToRem(24);
-        display: flex;
-        flex-direction: column;
-        gap: pxToRem(16);
-        align-items: flex-start;
-        //border: 1px solid green;
-
-        .recommend-flag {
-            margin: 0;
-            box-sizing: border-box;
-            border-radius: pxToRem(16);
-            display: flex;
-            flex-direction: row;
-            gap: pxToRem(4);
-            background-color: #00A970;
-            align-items: center;
-            //border: 1px solid red;
-
-            .check-icon_white {
-                width: pxToRem(16);
-                aspect-ratio: 1 / 1;
-                display: block;
-                filter: brightness(0) invert(1);
-                margin-left: pxToRem(16);
-                margin-top: pxToRem(6);
-                margin-bottom: pxToRem(6);
-
-            }
-
-            p {
-                //padding: pxToRem(4) pxToRem(16);
-                font-family: "Hanken Grotesk", sans-serif;
-                font-weight: 700;
-                font-size: pxToRem(12);
-                line-height: pxToRem(16);
-                letter-spacing: 0;
-                color: #fff;
-                margin: 0;
-                margin-right: pxToRem(16);
-                margin-top: pxToRem(6);
-                margin-bottom: pxToRem(6);
-
-            }
-        }
-
-        .hospital-name {
-            margin: 0;
-            padding: 0;
-            font-family: "Hanken Grotesk", sans-serif;
-            font-weight: 500;
-            font-style: normal;
-            font-size: pxToRem(24);
-            line-height: 100%;
-            letter-spacing: 0;
-            text-transform: uppercase;
-            word-break: break-word;
-            //border: 1px solid red;
-        }
-
-        .hospital-detail {
-            width: 100%;
-            //border: 1px solid red;
-            display: flex;
-            flex-direction: column;
-            gap: pxToRem(12);
-            align-items: flex-start;
-            .hospital-score {
-                display: flex;
-                flex-direction: row;
-                gap: pxToRem(8);
-                //border: 1px solid red;
-                align-items: center;
-
-                .score-icon {
-                    padding: 0;
-                    //border: 1px solid red;
-                    margin-top: 0;
-                    margin-bottom: 0;
-                }
-
-                .score-number {
-                    font-family: "Hanken Grotesk", sans-serif;
-                    font-weight: 700;
-                    font-style: normal;
-                    font-size: pxToRem(16);
-                    line-height: pxToRem(24);
-                    letter-spacing: 0;
-                    padding: 0;
-                    margin-top: 0;
-                    margin-bottom: 0;
-                    word-break: none;
-                    color: #00A970;
-                    //border: 1px solid red;
-                }
-
-            }
-            .gps-info {
-                //border: 1px solid red;
-                display: flex;
-                flex-direction: row;
-                gap: pxToRem(8);
-
-                .map-icon {
-                    width: pxToRem(16);
-                    aspect-ratio: 1 / 1;
-                }
-
-                p {
-                    font-family: "Hanken Grotesk", sans-serif;
-                    font-weight: 500;
-                    font-style: normal;
-                    font-size: pxToRem(16);
-                    line-height: pxToRem(24);
-                    letter-spacing: 0;
-                    padding: 0;
-                    margin: 0;
-                    word-break: none;
-
-                }
-                 .drive-time {
-                        color: #00A970;
-                    }
-
-            }
-
-            .hospital-info {
-                width: 100%;
-                //border: 1px solid red;
-                display: flex;
-                flex-direction: row;
-                gap: pxToRem(4);
-                border-top: 1px solid #9FCDE5;
-                border-left: none;
-                border-right: none;
-                border-bottom:none ;
-                margin-top:0;
-                align-items: flex-start;
-
-                .check-icon_green {
-                    width: pxToRem(16);
-                    aspect-ratio: 1 / 1;
-                    display: block;
-                    margin-top: 10px;
-                    flex-shrink: 0;
-                }
-
-                .hospital-info__body {
-                    display: flex;
-                    flex-direction: column;
-                    gap: pxToRem(6);
-                    margin-top: 10px;
-                    width: 100%;
-                }
-
-                .hospital-info__row {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: space-between;
-                    width: 100%;
-                    gap: pxToRem(8);
-                }
-
-                .hospital-info__label {
-                    margin: 0;
-                    font-family: "Hanken Grotesk", sans-serif;
-                    font-weight: 700;
-                    font-size: 16px;
-                    line-height: 24px;
-                    letter-spacing: 0;
-                }
-
-                .hospital-info__details {
-                    margin: 0;
-                    font-family: "Hanken Grotesk", sans-serif;
-                    font-weight: 400;
-                    font-size: 14px;
-                    line-height: 20px;
-                    color: #5a5a5a;
-                }
-
-                .hospital-info__toggle {
-                    background: none;
-                    border: none;
-                    padding: 0 0 0 pxToRem(6);
-                    cursor: pointer;
-                    font-family: "Hanken Grotesk", sans-serif;
-                    font-weight: 700;
-                    font-size: 14px;
-                    color: #5894BC;
-                    text-decoration: underline;
-                    vertical-align: baseline;
-                    white-space: nowrap;
-                    &:hover { color: #1D6287; }
-
-                    [data-theme="dark"] & {
-                        color: #9FCDE5;
-                        &:hover { color: #C8DCE8; }
-                    }
-                }
-            }
-
-        }
-    }
-
-}
-
-
-
-
-
-
-// --- Alternative tag (2nd highest score among non-recommended cards) ---
-.alternative-flag {
-    margin: 0;
-    box-sizing: border-box;
-    border-radius: pxToRem(16);
-    display: inline-flex;
-    flex-direction: row;
-    background-color: #1D6287;
     align-items: center;
+    gap: pxToRem(8);
+    flex-wrap: wrap;
+    margin: pxToRem(12) pxToRem(24) 0;
+  }
+
+  // --- Flag (recommended / alternative) ---
+  &__flag {
+    display: inline-flex;
+    align-items: center;
+    border-radius: pxToRem(16);
+    align-self: flex-start;
 
     p {
-        font-family: "Hanken Grotesk", sans-serif;
-        font-weight: 700;
-        font-size: pxToRem(12);
-        line-height: pxToRem(16);
-        color: #fff;
-        margin: 0;
-        padding: pxToRem(6) pxToRem(16);
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: pxToRem(12);
+      line-height: pxToRem(16);
+      color: #fff;
+      margin: pxToRem(6) pxToRem(16) pxToRem(6) 0;
     }
-}
 
-// --- Dark mode icon brightness ---
-// Map pin fill is #5F5F5F (too dark on dark bg) — brighten to a visible mid-grey
-[data-theme="dark"] .map-icon {
-  filter: brightness(2.5) saturate(0.5);
-}
+    &--recommended {
+      background-color: #00A970;
+    }
 
-// Alert exclamation fill is #8A3216 (dark red) — lift to a brighter red
-[data-theme="dark"] .alert-icon {
-  filter: brightness(1.8) saturate(1.3);
-}
+    &--alternative {
+      background-color: #1D6287;
 
-/* ===== AiRecommend = false ===== */
-.card.normal {
-    max-width: 100%;
-    border: 1px solid #1D6287;
-    background-color: white;
-    border-radius: pxToRem(16);
+      p {
+        margin-left: pxToRem(16);
+      }
+    }
+  }
+
+  &__flag-icon {
+    width: pxToRem(16);
+    aspect-ratio: 1 / 1;
+    display: block;
+    filter: brightness(0) invert(1);
+    margin: pxToRem(6) 0 pxToRem(6) pxToRem(16);
+  }
+
+  // --- Main content area ---
+  &__display {
+    margin: pxToRem(8) pxToRem(24) pxToRem(24);
+    display: flex;
+    flex-direction: column;
+    gap: pxToRem(16);
+    align-items: flex-start;
+  }
+
+  &__name {
+    margin: 0;
+    padding: 0;
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: pxToRem(24);
+    line-height: 100%;
+    letter-spacing: 0;
+    word-break: break-word;
+  }
+
+  &__detail {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: pxToRem(12);
+    align-items: flex-start;
+  }
+
+  &__score-number {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: pxToRem(16);
+    line-height: pxToRem(24);
+    letter-spacing: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  &--ai &__score-number {
+    color: #00A970;
+  }
+
+  &--normal &__score-number {
+    color: #E17100;
+  }
+
+  &__gps {
     display: flex;
     flex-direction: row;
-    gap: pxToRem(16);
+    gap: pxToRem(8);
+
+    p {
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+      font-size: pxToRem(16);
+      line-height: pxToRem(24);
+      letter-spacing: 0;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  &__gps-icon {
+    width: pxToRem(16);
+    aspect-ratio: 1 / 1;
+  }
+
+  &--ai &__drive-time {
+    color: #00A970;
+  }
+
+  &--normal &__drive-time {
+    color: #E17100;
+  }
+
+  &__info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: pxToRem(4);
+    border-top: 1px solid #9FCDE5;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    margin-top: 0;
+    align-items: center;
+  }
+
+  &__check-icon {
+    width: pxToRem(16);
+    aspect-ratio: 1 / 1;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  &__alert-icon {
+    width: pxToRem(16);
+    aspect-ratio: 1 / 1;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  &__info-body {
+    display: flex;
+    flex-direction: column;
+    gap: pxToRem(6);
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  &__info-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: pxToRem(8);
+  }
+
+  &__info-label {
+    margin: 0;
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    flex: 1;
+  }
+
+  &--normal &__info-label {
+    font-weight: 500;
+  }
+
+  &__info-details {
+    margin: 0;
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #5a5a5a;
+  }
+
+  &__info-toggle {
+    background: none;
+    border: none;
+    padding: 0 0 0 pxToRem(6);
+    cursor: pointer;
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #5894BC;
+    text-decoration: underline;
+    vertical-align: baseline;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    &:hover {
+      color: #1D6287;
+    }
+
+    [data-theme="dark"] & {
+      color: #9FCDE5;
+
       &:hover {
-        background-color: #F2F2F2;
+        color: #C8DCE8;
+      }
     }
-          &.selected {
-        border-width: 3px;
-        border-color: #1D6287; 
-    }
-
-    .display-area {
-        width: 100%;
-        margin: pxToRem(24);
-        display: flex;
-        flex-direction: column;
-        gap: pxToRem(16);
-        align-items: flex-start;
-        //border: 1px solid #E17100;
+  }
 
 
-        .hospital-name {
-            margin: 0;
-            padding: 0;
-            font-family: "Hanken Grotesk", sans-serif;
-            font-weight: 500;
-            font-style: normal;
-            font-size: pxToRem(24);
-            line-height: 100%;
-            letter-spacing: 0;
-            text-transform: uppercase;
-            word-break: break-word;
-            //border: 1px solid red;
-        }
-
-        .hospital-detail {
-            width: 100%;
-            //border: 1px solid red;
-            display: flex;
-            flex-direction: column;
-            gap: pxToRem(12);
-            align-items: flex-start;
-            .hospital-score {
-                display: flex;
-                flex-direction: row;
-                gap: pxToRem(8);
-                //border: 1px solid red;
-                align-items: center;
-
-                .score-icon {
-                    padding: 0;
-                    //border: 1px solid red;
-                    margin-top: 0;
-                    margin-bottom: 0;
-                }
-
-                .score-number {
-                    font-family: "Hanken Grotesk", sans-serif;
-                    font-weight: 700;
-                    font-style: normal;
-                    font-size: pxToRem(16);
-                    line-height: pxToRem(24);
-                    letter-spacing: 0;
-                    padding: 0;
-                    margin-top: 0;
-                    margin-bottom: 0;
-                    word-break: none;
-                    color: #E17100;
-                    //border: 1px solid red;
-                }
-
-            }
-            .gps-info {
-                //border: 1px solid red;
-                display: flex;
-                flex-direction: row;
-                gap: pxToRem(8);
-
-                .map-icon {
-                    width: pxToRem(16);
-                    aspect-ratio: 1 / 1;
-                }
-
-                p {
-                    font-family: "Hanken Grotesk", sans-serif;
-                    font-weight: 500;
-                    font-style: normal;
-                    font-size: pxToRem(16);
-                    line-height: pxToRem(24);
-                    letter-spacing: 0;
-                    padding: 0;
-                    margin: 0;
-                    word-break: none;
-
-                }
-                 .drive-time {
-                        color: #E17100;
-                    }
-
-            }
-
-            .hospital-info {
-                width: 100%;
-                //border: 1px solid red;
-                display: flex;
-                flex-direction: row;
-                gap: pxToRem(4);
-                border-top: 1px solid #9FCDE5;
-                border-left: none;
-                border-right: none;
-                border-bottom:none ;
-                margin-top:0;
-                align-items: center;
-
-                .alert-icon {
-                    width: pxToRem(16);
-                    aspect-ratio: 1 / 1;
-                    display: block;
-                    margin-top: 10px;
-                    flex-shrink: 0;
-                }
-
-                .hospital-info__body {
-                    display: flex;
-                    flex-direction: column;
-                    gap: pxToRem(6);
-                    margin-top: 10px;
-                    width: 100%;
-                }
-
-                .hospital-info__row {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: space-between;
-                    width: 100%;
-                    gap: pxToRem(8);
-                }
-
-                .hospital-info__label {
-                    margin: 0;
-                    font-family: "Hanken Grotesk", sans-serif;
-                    font-weight: 500;
-                    font-size: 16px;
-                    line-height: 24px;
-                    letter-spacing: 0;
-                }
-
-                .hospital-info__details {
-                    margin: 0;
-                    font-family: "Hanken Grotesk", sans-serif;
-                    font-weight: 400;
-                    font-size: 14px;
-                    line-height: 20px;
-                    color: #5a5a5a;
-                }
-
-                .hospital-info__toggle {
-                    background: none;
-                    border: none;
-                    padding: 0 0 0 pxToRem(6);
-                    cursor: pointer;
-                    font-family: "Hanken Grotesk", sans-serif;
-                    font-weight: 600;
-                    font-size: 14px;
-                    color: #5894BC;
-                    text-decoration: underline;
-                    vertical-align: baseline;
-                    white-space: nowrap;
-                    &:hover { color: #1D6287; }
-
-                    [data-theme="dark"] & {
-                        color: #9FCDE5;
-                        &:hover { color: #C8DCE8; }
-                    }
-                }
-            }
-
-        }
+  // --- ≤1199px: layout/structure (font sizes stay at desktop) ---
+  @media (max-width: 1199px) {
+    &__score-row {
+      margin: pxToRem(8) pxToRem(12) 0;
     }
 
+    &__flag-icon {
+      width: pxToRem(12);
+      margin: pxToRem(4) 0 pxToRem(4) pxToRem(8);
+    }
+
+    &__display {
+      margin: pxToRem(6) pxToRem(12) pxToRem(12);
+      gap: pxToRem(8);
+    }
+
+    &__detail {
+      gap: pxToRem(6);
+    }
+
+    &__gps-icon,
+    &__check-icon,
+    &__alert-icon {
+      width: pxToRem(12);
+    }
+  }
+
+  // --- ≤900px: compact font sizes ---
+  @media (max-width: 900px) {
+    &__name {
+      font-size: pxToRem(13);
+    }
+
+    &__score-number,
+    &__gps p {
+      font-size: pxToRem(12);
+      line-height: 1.3;
+    }
+
+    &__info-label,
+    &__info-toggle {
+      font-size: pxToRem(11);
+      line-height: 1.3;
+    }
+
+    &__info-details {
+      font-size: pxToRem(11);
+    }
+  }
+
+  // --- Dark mode ---
+  [data-theme="dark"] & {
+    background-color: #162433;
+    border-color: #2C4A60;
+    color: #C8DCE8;
+
+    &:hover {
+      background-color: #1D3A4F;
+    }
+  }
+
+  [data-theme="dark"] &__name {
+    color: #E0E8EC;
+  }
+
+  [data-theme="dark"] &__info {
+    border-top-color: #2C4A60;
+  }
+
+  [data-theme="dark"] &__info-details {
+    color: #8BAABB;
+  }
+
+  [data-theme="dark"] &__info-label {
+    color: #C8DCE8;
+  }
+
+  [data-theme="dark"] &__gps p {
+    color: #C8DCE8;
+  }
+
+  [data-theme="dark"] &__gps-icon {
+    filter: brightness(2.5) saturate(0.5);
+  }
+
+  [data-theme="dark"] &__alert-icon {
+    filter: brightness(1.8) saturate(1.3);
+  }
 }

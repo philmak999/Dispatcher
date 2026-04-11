@@ -61,6 +61,20 @@
   align-items: flex-start;
 }
 
+.main-layout__hospital-body {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.35s ease;
+
+  &--collapsed {
+    grid-template-rows: 0fr;
+  }
+}
+
+.main-layout__hospital-body-inner {
+  overflow: hidden;
+}
+
 .main-part--menu-open .main-layout {
   flex-direction: column;
 }
@@ -71,24 +85,8 @@
   width: 100%;
 }
 
-// --- Responsive: fluid between tablet and desktop ---
-// Prevent the right-row (hospitals list + map) from overflowing at mid-widths
+// --- Responsive: tablet and mid-width (portrait tablet through small desktop) ---
 @media (max-width: 1199px) {
-  .main-layout__right-row {
-    flex-wrap: wrap;
-  }
-
-  .main-layout__right-row > * {
-    flex: 1 1 300px;
-  }
-
-  .main-layout__map-stack {
-    width: 100%;
-  }
-}
-
-// --- Responsive: tablet (portrait and landscape) ---
-@media (max-width: 900px) {
   .main-part {
     padding: 2rem 1.5rem 0;
     min-height: unset;
@@ -108,6 +106,7 @@
   // Stack left and right columns vertically
   .main-layout {
     flex-direction: column;
+    gap: 12px;
   }
 
   .main-layout__left,
@@ -115,11 +114,13 @@
     flex: 1 1 auto;
     width: 100%;
     min-width: unset;
+    gap: 12px;
   }
 
   // Stack hospitals list and map vertically at tablet
   .main-layout__right-row {
     flex-direction: column;
+    gap: 12px;
   }
 
   .main-layout__right-row > * {
@@ -127,9 +128,15 @@
     width: 100%;
   }
 
+  // Hospital grid: 2 columns when the side menu is pushing content
+  .main-part--menu-open .hospitals-list__scroll {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .main-layout__map-stack {
     width: 100%;
     align-items: stretch;
+    gap: 12px;
   }
 }
 
@@ -173,6 +180,10 @@
       color: #E0E8EC;
     }
 
+    &__chevron {
+      color: #C8DCE8;
+    }
+
     &__content,
     &__details,
     &__critical-list {
@@ -180,6 +191,10 @@
     }
 
     &__divider {
+      background-color: #2C3E50;
+    }
+
+    &__section-divider {
       background-color: #2C3E50;
     }
 
@@ -226,42 +241,7 @@
     }
   }
 
-  // Hospital cards
-  .card.ai,
-  .card.normal {
-    background-color: #162433;
-    border-color: #2C4A60;
-    color: #C8DCE8;
-
-    &:hover {
-      background-color: #1D3A4F;
-    }
-
-    .hospital-name {
-      color: #E0E8EC;
-    }
-
-    .hospital-info {
-      border-top-color: #2C4A60;
-    }
-
-    .hospital-info__details {
-      color: #8BAABB;
-    }
-
-    .hospital-info__label {
-      color: #C8DCE8;
-    }
-
-    .hospital-info__toggle {
-      color: #9FCDE5;
-      &:hover { color: #C8DCE8; }
-    }
-
-    p {
-      color: #C8DCE8;
-    }
-  }
+  // Hospital cards — dark mode overrides are handled inside HospitalCard.scss
 
   // Map panel
   .map-panel {
@@ -328,28 +308,32 @@
     color: #E0E8EC;
   }
 
+  .hospital__chevron {
+    color: #C8DCE8;
+  }
+
   // Main page nav — greeting + nav bar
-  .nav-container > p {
+  .nav-container__greeting {
     color: #E0E8EC;
   }
 
-  .nav-bar {
+  .nav-container__bar {
     background-color: #162433;
     border-color: #2C4A60;
+  }
 
-    p {
-      color: #8BAABB;
+  .nav-container__item {
+    color: #8BAABB;
 
-      &:hover {
-        color: #9FCDE5;
-      }
+    &:hover {
+      color: #9FCDE5;
     }
 
-    p:nth-child(1) {
+    &:first-child {
       border-right-color: #2C4A60;
     }
 
-    p:nth-child(3) {
+    &:last-child {
       border-left-color: #2C4A60;
     }
   }
@@ -365,9 +349,9 @@
   // Page footer — match body background exactly
   .page-footer {
     background-color: #0F1923;
-  }
 
-  .page-footer__text {
-    color: #4a6a7a;
+    &__text {
+      color: #4a6a7a;
+    }
   }
 }

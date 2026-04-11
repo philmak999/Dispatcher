@@ -13,33 +13,35 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  .nav-logo {
+
+  &__logo {
     display: flex;
     flex-direction: row;
     gap: pxToRem(16);
     padding: 1.5rem 2rem;
     align-items: center;
-    p {
-        font-family: "Hanken Grotesk", sans-serif;
-        font-weight: 900;
-        font-style: normal;
-        font-size: pxToRem(24);
-        line-height: 1;
-        letter-spacing: 0.06em;
-        text-align: center;
-        color: white;
-        margin: 0;     
-    }
   }
 
-  .setting {
+  &__logo-title {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: pxToRem(24);
+    line-height: 1;
+    letter-spacing: 0.06em;
+    text-align: center;
+    color: white;
+    margin: 0;
+  }
+
+  &__setting {
     padding: 1.5rem 2rem;
     display: flex;
     align-items: center;
   }
-}
 
-.icon{
+  &__icon {
     width: pxToRem(32);
-    height:pxToRem(32);
+    height: pxToRem(32);
+  }
 }
