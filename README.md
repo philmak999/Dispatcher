@@ -19,7 +19,7 @@ Future updates:
 - Requesting participation and access to live hospital data for AI solutions to cutting down ER wait times across the city. 
 
 ### Summary
-| # | AI Solutions to 911 Emergency Dispatch Calls | Description |
+| # | AI-powered solutions | Description |
 |---|--------------------------------------------|-------------|
 | 1 | **Transcript-to-Case Extraction** | Converts a 911 call transcript into a structured and fully customizable patient case summary — name, location, profile, medical background, and symptoms — with prompts specifically structured to train the LLM with more cases |
 | 2 | **Medical Triage** | Evaluates and assigns a severity level (Critical / Urgent / Non-urgent), identifies the primary health concern, and recommends the specific hospital unit |
