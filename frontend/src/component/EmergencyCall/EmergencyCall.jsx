@@ -3,7 +3,34 @@ import "./EmergencyCall.scss";
 import { useNavigate } from "react-router-dom";
 import sendIcon from "../../assets/icons/Send.svg";
 
-const BASE_URL = "http://localhost:8080";
+const GRAPHQL_URL = "http://localhost:8080/graphql";
+
+const PROCESS_EMERGENCY_CALL = `
+  mutation ProcessEmergencyCall($transcript: String!, $hospitals: [HospitalInput!]!) {
+    processEmergencyCall(transcript: $transcript, hospitals: $hospitals) {
+      patientData {
+        name
+        location
+        relationship
+        profile
+        history
+        symptoms
+      }
+      triageData {
+        severity
+        leadingSymptom
+        recommendedUnit
+      }
+      scoredHospitals {
+        HospitalName
+        Recommendscore
+        AiRecommend
+        HospitalInfo
+        HospitalDetails
+      }
+    }
+  }
+`;
 
 const formatTime = (date) =>
   date.toLocaleTimeString("en-US", {
@@ -16,7 +43,6 @@ const EmergencyCall = ({ baseHospitals = [] }) => {
   const navigate = useNavigate();
   const [lines, setLines] = useState([]);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [processingStep, setProcessingStep] = useState("");
   const [error, setError] = useState("");
   const [activeSpeaker, setActiveSpeaker] = useState(null);
   const recognitionRef = useRef(null);
@@ -31,7 +57,6 @@ const EmergencyCall = ({ baseHospitals = [] }) => {
   }, [lines]);
 
   const startRecording = (speaker) => {
-    // Record call start time on first recording
     if (!callStartTimeRef.current) {
       callStartTimeRef.current = new Date();
     }
@@ -93,40 +118,27 @@ const EmergencyCall = ({ baseHospitals = [] }) => {
 
     const transcript = lines.map((l) => `${l.speaker}: ${l.text}`).join("\n");
 
-    try {
-      // Step 1: Extract patient data from transcript
-      setProcessingStep("Extracting patient information...");
-      const callRes = await fetch(`${BASE_URL}/api/process-call`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ transcript }),
-      });
-      if (!callRes.ok) throw new Error(`process-call failed: ${callRes.status}`);
-      const patientData = await callRes.json();
+    const hospitalInputs = baseHospitals.map(({ HospitalName, HospitalInfo, HospitalNameDistance, DriveTime }) => ({
+      HospitalName,
+      HospitalInfo,
+      HospitalNameDistance: String(HospitalNameDistance),
+      DriveTime: String(DriveTime),
+    }));
 
-      // Step 2: Triage symptoms
-      setProcessingStep("Triaging symptoms...");
-      const triageRes = await fetch(`${BASE_URL}/api/triage`, {
+    try {
+      const res = await fetch(GRAPHQL_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          symptoms: patientData.symptoms,
-          history: patientData.history,
-          profile: patientData.profile,
+          query: PROCESS_EMERGENCY_CALL,
+          variables: { transcript, hospitals: hospitalInputs },
         }),
       });
-      if (!triageRes.ok) throw new Error(`triage failed: ${triageRes.status}`);
-      const triageData = await triageRes.json();
 
-      // Step 3: Score hospitals
-      setProcessingStep("Scoring hospitals...");
-      const hospRes = await fetch(`${BASE_URL}/api/recommend-hospitals`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ patient: patientData, hospitals: baseHospitals }),
-      });
-      if (!hospRes.ok) throw new Error(`recommend-hospitals failed: ${hospRes.status}`);
-      const { hospitals: scoredHospitals } = await hospRes.json();
+      const { data, errors } = await res.json();
+      if (errors?.length) throw new Error(errors[0].message);
+
+      const { patientData, triageData, scoredHospitals } = data.processEmergencyCall;
 
       navigate("/", {
         state: {
@@ -139,7 +151,6 @@ const EmergencyCall = ({ baseHospitals = [] }) => {
     } catch (err) {
       setError(`Failed to process call: ${err.message}`);
       setIsProcessing(false);
-      setProcessingStep("");
     }
   };
 
@@ -188,7 +199,7 @@ const EmergencyCall = ({ baseHospitals = [] }) => {
         )}
 
         {isProcessing && (
-          <p className="emergency__processing">{processingStep}</p>
+          <p className="emergency__processing">Processing call...</p>
         )}
 
         {error && (

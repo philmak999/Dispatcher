@@ -35,7 +35,7 @@ function App() {
       location: "1458 Dundas St W, Toronto, ON",
       relationship: "Spouse",
       profile: "Name: Gabriel Smith\nSex: Male\nAge: 62",
-      history: "Conditions: Diabetes, Hypertension\nNotes: Previous cardiac concerns",
+      history: "Medical Emergency: Cardiac event - Chest pain\nConditions: Diabetes, Hypertension\nNotes: Previous cardiac concerns",
       symptoms:
         'Severe chest pain with shortness of breath \nChest pain began approximately 20 minutes ago \nPain described as "crushing" and radiating to left arm \nShortness of breath \nSweating \nPatient conscious but weak.',
     },
@@ -46,7 +46,7 @@ function App() {
       location: "88 Bloor St E, Toronto, ON",
       relationship: "Bystander",
       profile: "Name: Elena Park\nSex: Female\nAge: 29",
-      history: "Conditions: Asthma (moderate)\nNotes: No known allergies",
+      history: "Medical Emergency: Respiratory distress - Asthma attack\nConditions: Asthma (moderate)\nNotes: No known allergies",
       symptoms:
         "Severe shortness of breath and wheezing \nRapid breathing and audible wheeze \nUnable to speak full sentences \nChest tightness reported \nRescue inhaler used with minimal relief \nPatient anxious but responsive.",
     },
@@ -121,7 +121,7 @@ function App() {
   const containerClassName = isMenuOpen
     ? "main-part main-part--menu-open"
     : "main-part";
-  const selectedHospital = hospitals[selectedHospitalIndex] ?? null;
+  const selectedHospital = displayHospitals[selectedHospitalIndex] ?? null;
 
   useEffect(() => {
     if (location.pathname === "/dispatched" || location.pathname === "/emergency") {

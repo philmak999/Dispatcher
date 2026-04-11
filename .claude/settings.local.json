@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(node index.js)",
+      "Bash(curl -s -X POST http://localhost:8080/graphql -H \"Content-Type: application/json\" -d '{\"query\":\"{ _empty }\"}')"
+    ]
+  }
+}

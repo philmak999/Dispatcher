@@ -88,10 +88,14 @@ function Map({ hospital, patientLocation }) {
       let origin = [-79.4437, 43.6487]; // Dundas St W fallback
       if (patientLocation) {
         try {
+          // Normalise intersection format: Mapbox resolves "X & Y" correctly but
+          // treats "X and Y" as a street name containing the word "and", causing
+          // it to match only one of the two streets.
+          const normalised = patientLocation.replace(/\band\b/gi, "&");
           // Append city context if not already present so Mapbox resolves to Toronto
-          const query = /toronto|ontario/i.test(patientLocation)
-            ? patientLocation
-            : `${patientLocation}, Toronto, Ontario`;
+          const query = /toronto|ontario/i.test(normalised)
+            ? normalised
+            : `${normalised}, Toronto, Ontario`;
           const res = await fetch(
             `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(query)}.json?country=CA&bbox=-79.6393,43.5810,-79.1158,43.8554&proximity=${TORONTO_CENTER.join(",")}&access_token=${TOKEN}`
           );
