@@ -1,4 +1,4 @@
-# Dispatcher
+# [Dispatcher](https://philmak999.github.io/Dispatcher/)
 
 An AI-powered 911 dispatch assistant that transforms a live emergency call into a structured patient case, medical triage, and ranked hospital recommendations saving crucial seconds that could potentially make the difference in saving lives. 
 
